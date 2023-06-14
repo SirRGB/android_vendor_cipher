@@ -213,8 +213,7 @@ CIPHER_BUILD_ZIP_TYPE := VANILLA
 ifeq ($(CIPHER_OFFICIAL), true)
     CIPHER_BUILD := OFFICIAL
     PRODUCT_PACKAGES += \
-    Updater \
-    CipherShades
+    Updater
 endif
 
 CIPHER_GAPPS ?= true
@@ -235,10 +234,13 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.biometrics.face.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.biometrics.face.xml
 endif
 
-# Add CipherOS Stuff 
+# Add CipherOS Stuff
 LINEAGE_VERSION := CipherOS-Revived-$(PRODUCT_VERSION_MAJOR)-$(PRODUCT_VERSION_MINOR)-$(shell date +%Y%m%d-%H%M)-$(LINEAGE_BUILD)-$(CIPHER_BUILD)-$(CIPHER_BUILD_ZIP_TYPE)
 LINEAGE_DISPLAY_VERSION := CipherOS-Revived-$(PRODUCT_VERSION_MAJOR)-$(PRODUCT_VERSION_MINOR)-$(LINEAGE_BUILD)-$(CIPHER_BUILD)-$(CIPHER_BUILD_ZIP_TYPE)
 CIPHER_VERSION := $(LINEAGE_VERSION)
+
+PRODUCT_PACKAGES += \
+    CipherShades
 
 # Blur
 ifeq ($(TARGET_USES_BLUR), true)
